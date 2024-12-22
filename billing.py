@@ -73,6 +73,8 @@ def display_report():
             for row in csv_reader:
                 invoice_id, date, subtotal, service_charge, VAT, total_amount = row
                 print(f"{invoice_id:<10} {date:<20} {subtotal:>10} {service_charge:>18} {VAT:>12} {total_amount:>13}")
+            
+
     except FileNotFoundError:
         print("No report available")
     
