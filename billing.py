@@ -36,7 +36,7 @@ def generate_invoice(items):
     invoice_id = f"{current_datetime.strftime('%M%S')}"
     print(f"Date: {current_datetime.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"Invoice ID: {invoice_id}\n")
-    print(f"{39*'-'}")
+    print(f"{49*'-'}")
     
     for item in items:
         item_code, item_name, item_price = item
@@ -47,13 +47,13 @@ def generate_invoice(items):
     VAT =  round(subtotal_amount * 0.13,2)
     total_amount = round((subtotal_amount + service_charge + VAT),2)
 
-    print(f"{39*'-'}")
+    print(f"{49*'-'}")
     print(f"{'Subtotal':<30} RS.{subtotal_amount:<7.2f}")
     print(f"{'Service Charge (10%)':<30} RS.{service_charge:<7.2f}")
     print(f"{'VAT (13%)':<30} RS.{VAT:<7.2f}")
-    print(f"{39*'='}")
+    print(f"{49*'='}")
     print(f"{'Total Amount':<30} RS.{total_amount:<7.2f}")
-    print(f"{39*'='}\n")
+    print(f"{49*'='}\n")
     print("Thank you for your purchase!\n")
 
     with open("report.csv", mode="a", newline='') as file:
@@ -68,13 +68,11 @@ def display_report():
     try:
         with open("report.csv", mode="r") as file:
             csv_reader = csv.reader(file)
-            print(f"{20*'='} REPORT {20*'='}")
+            print(f"{35*'='} DAILY SALES REPORT {35*'='}")
             print("\n")
             for row in csv_reader:
                 invoice_id, date, subtotal, service_charge, VAT, total_amount = row
                 print(f"{invoice_id:<10} {date:<20} {subtotal:>10} {service_charge:>18} {VAT:>12} {total_amount:>13}")
-            
-
     except FileNotFoundError:
         print("No report available")
     
